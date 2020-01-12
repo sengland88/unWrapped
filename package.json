@@ -1,8 +1,8 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "unWrapped",
   "version": "1.0.0",
   "description": "Project 2 Starter",
-  "main": "unWrapped",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint --quiet .",
