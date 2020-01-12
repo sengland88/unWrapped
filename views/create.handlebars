@@ -12,12 +12,12 @@
 
             <div class="form-group">
               <label>Occasion</label>
-              <select id="inputState" class="form-control">
+              <select class="form-control" id="createType">
                 <option selected>Choose...</option>
-                <option>Bridal</option>
-                <option>Wedding</option>
-                <option>Baby</option>
-                <option>Birthday</option>
+                <option value="bridal">Bridal</option>
+                <option value="wedding">Wedding</option>
+                <option value="baby">Baby</option>
+                <option value="birthday">Birthday</option>
               </select>
             </div>
 
@@ -27,14 +27,13 @@
               <input type="date" class="form-control" id="createDate" placeholder="MM/DD/YYYY">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="createSubmit">Submit</button>
           </form>
-
 
       </div>
     </div>
   </div>
 </div>
 
-{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script> --}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/create.js"></script>
