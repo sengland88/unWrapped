@@ -1,5 +1,3 @@
-var randomize = require("randomatic");
-
 $("#createSubmit").on("click", function(event) {
   event.preventDefault();
   console.log("this works");
@@ -13,12 +11,13 @@ $("#createSubmit").on("click", function(event) {
     return
   }
 
+  var newOrganizer = {
+    name: name,
+    type: type,
+    date: date
+  }
+
   console.log("Success!")
 
-  console.log(name)
-  console.log(type)
-  console.log(date)  
-
-  // console.log(code)
-
+  $.post("api/parties", newOrganizer)   
 });
