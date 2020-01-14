@@ -25,4 +25,12 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+  // Adds a guest to the database
+  app.post("/api/guests", function(req, res) {
+    
+    db.Guest.create(req.body).then(function(data) {
+      console.log("added")
+      res.json(data);
+    });
+  });
 };

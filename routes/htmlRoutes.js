@@ -6,12 +6,10 @@ module.exports = function(app) {
     res.render("home");
   });
 
-  // Load example page and pass in an example by id
   app.get("/about", function(req, res) {
     res.render("about");
   });
 
-  // Render 404 page for any unmatched routes
   app.get("/rsvp", function(req, res) {
     res.render("rsvp");
   });
@@ -23,5 +21,11 @@ module.exports = function(app) {
   app.get("/registry", function(req, res) {
     res.render("registry");
   });
-};
 
+  app.get("/guest", function(req, res) {
+    res.render("guest");
+  });
+  app.get("/guest_registry", function(req, res) {
+    res.render("guest_registry");
+  });
+};
