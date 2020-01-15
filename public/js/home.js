@@ -6,7 +6,7 @@ $("#userSubmit").on("click", function(event) {
     email: $("#userEmail").val().trim(),
     password: $("#userPassword").val().trim() 
   }
-
+  console.log(userInfo);
   let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   let format = !!(userInfo.email.match(regex));
 
@@ -15,7 +15,7 @@ $("#userSubmit").on("click", function(event) {
     return
   }
 
-  $.get("api/users", userInfo)  
+  $.get("api/users", userInfo)
 });
 
 
@@ -61,3 +61,7 @@ function checkForEmptyEntries(entry) {
   }
 }
 
+function checkUsers() {
+  if(userInfo.email !== db.User.email) 
+  prompt("If you are not registered, please go register");
+}
