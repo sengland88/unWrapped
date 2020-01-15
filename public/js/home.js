@@ -7,10 +7,18 @@ $("#userSubmit").on("click", function(event) {
     password: $("#userPassword").val().trim() 
   }
 
-  console.log(userInfo)
+  let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  let format = !!(userInfo.email.match(regex));
 
-    //insert get method
+  if (userInfo.email === "" || userInfo.password === "" || !format ) {
+    console.log("error")
+    return
+  }
+
+  $.get("api/users", userInfo)  
 });
+
+
 
 $("#userCreate").on("click", function(event) {
   event.preventDefault();
@@ -19,14 +27,37 @@ $("#userCreate").on("click", function(event) {
   let newUserInfo = {
     firstName: $("#firstName").val().trim(),
     lastName: $("#lastName").val().trim(),
+    email: $("#userEmail").val().trim(),
     address: $("#userAddress").val().trim(),
-    emailAddress: $("#userEmail").val().trim(),
     password: $("#userPassword").val().trim(),
   }
 
+  let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  let format = !!(newUserInfo.email.match(regex));
+
+  //need validating for newUserInfo
+  //try using functions below.
+  if (!format) return
+
   console.log(newUserInfo)
 
-  //insert post method
+  $.post("api/users", newUserInfo)
 });
 
+
+function emailFormat(email) {
+
+  let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  let format = !!(email.match(regex));
+
+  if (!format) return
+}
+
+function checkForEmptyEntries(entry) {
+  for (let key in entry) {
+    if (entry[key] === "") {
+      return false
+    }
+  }
+}
 
