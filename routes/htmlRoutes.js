@@ -2,30 +2,40 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+
   app.get("/", function(req, res) {
-    res.render("home");
+    res.render("main");
+  });
+
+  app.get("/login", function(req, res) {
+    res.render("login");
+  });
+
+  app.get("/register", function(req, res) {
+    res.render("register");
+  });
+
+  app.get("/home", function(req, res) {
+    res.render("welcome");
   });
 
   app.get("/about", function(req, res) {
     res.render("about");
   });
 
-  app.get("/rsvp", function(req, res) {
-    res.render("rsvp");
-  });
-
   app.get("/create", function(req, res) {
     res.render("create");
   });
 
-  app.get("/registry", function(req, res) {
-    res.render("registry");
+  app.get("/rsvp", function(req, res) {
+    res.render("rsvp");
   });
 
-  app.get("/guest", function(req, res) {
-    res.render("guest");
+  app.get("/parties", function(req, res) {
+    res.render("parties");
   });
-  app.get("/guest_registry", function(req, res) {
-    res.render("guest_registry");
+
+  app.get("/*", function(req, res) {
+    res.render("404");
   });
 };
