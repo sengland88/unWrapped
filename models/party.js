@@ -2,22 +2,21 @@ module.exports = function(sequelize, DataTypes) {
 	var Party = sequelize.define("Party", {
 		partyCode: {
 			type: DataTypes.STRING,
-			primaryKey: true
 		},
 		organizerName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+		type: DataTypes.STRING,
+		allowNull: false,
+		validate: {
+		len: [1]
+		}
 		},
 		organizerCode: DataTypes.STRING,
 		occasion: {
 			type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+		allowNull: false,
+		validate: {
+		len: [1]
+		}
 		},
 		date: DataTypes.DATEONLY
 	});

@@ -1,18 +1,23 @@
-<div id="createPage">
+<div id="createParty">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h2>Unwrapped - This is our create Page!</h2>
+        <h2>Unwrapped - This is our create party Page!</h2>
 
         <form>
             <div class="form-group">
-              <label>Name</label>
-              <input type="name" class="form-control" id="createName" aria-describedby="emailHelp">
+              <label>Party Name</label>
+              <input type="name" class="form-control" id="partyName">
             </div>
 
             <div class="form-group">
-              <label>Occasion</label>
-              <select class="form-control" id="createType">
+              <label>Party Location</label>
+              <input type="text" class="form-control" id="partyLocation">
+            </div>
+
+            <div class="form-group">
+              <label>Party Type</label>
+              <select class="form-control" id="partyType">
                 <option selected>Choose...</option>
                 <option value="bridal">Bridal</option>
                 <option value="wedding">Wedding</option>
@@ -22,9 +27,15 @@
             </div>
 
             <div class="form-group">
-              <label>Date</label>
+              <label>Party Date</label>
               <small></small>
-              <input type="date" class="form-control" id="createDate" placeholder="MM/DD/YYYY">
+              <input type="date" class="form-control" id="partyDate" placeholder="MM/DD/YYYY">
+            </div>
+
+            <div class="form-group">
+              <label>Party Time</label>
+              <small></small>
+              <input type="text" class="form-control" id="partyTime"">
             </div>
 
             <button type="submit" class="btn btn-primary" id="createSubmit">Submit</button>
