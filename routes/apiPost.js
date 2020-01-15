@@ -3,36 +3,31 @@ var randomize = require('randomatic');
 
 module.exports = function(app) {
   // Create a new example
-  app.post("/api/parties", function(req, res) {
-
-    let organizer = randomize('A0', 5)
-    let party = randomize('A0', 5)
-    console.log(organizer)
-    console.log(party)
-
-    console.log(req.body)
-
-    let newOrganizer = {
-      partyCode: party,
-      organizerName: req.body.name,
-      organizerCode: organizer,
-      occasion: req.body.type,
-      date: req.body.date
-    };    
-
-    db.Party.create(newOrganizer).then(function(data) {
-      console.log("Woot woot!")
+  app.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(data) {
+      console.log("Successful");
       res.json(data);
     });
   });
 
+  app.post("/api/parties", function(req, res) {
 
+    let party = randomize('A0', 5)
 
+    let newParty = {
+      name: req.body.name,
+      occasion: req.body.occasion,
+      location: req.body.location,
+      date: req.body.date,
+      time: req.body.time,
+      partyCode: party,
+      UserId: 1 //this will need to change
+    }
 
-  app.post("/api/guests", function(req, res) {
-  
-    db.Guest.create(req.body).then(function(data) {
-      console.log("added")
+    console.log(newParty)
+
+    db.Party.create(newParty).then(function(data) {
+      console.log("Successful");
       res.json(data);
     });
   });
