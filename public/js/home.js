@@ -15,7 +15,16 @@ $("#userSubmit").on("click", function(event) {
     return
   }
 
-  $.get("api/users", userInfo)
+  $.get("api/users", userInfo).then(function(data){
+    if(data.message){
+      alert("Password or email incorrect. Please try again or register to the site.")
+    } else {
+      localStorage.clear();
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("userId", data.userId);
+      window.location.href = "/welcome";
+    }
+  })
 });
 
 
@@ -61,7 +70,3 @@ function checkForEmptyEntries(entry) {
   }
 }
 
-function checkUsers() {
-  if(userInfo.email !== db.User.email) 
-  prompt("If you are not registered, please go register");
-}
