@@ -6,7 +6,7 @@ $("#userSubmit").on("click", function(event) {
     email: $("#userEmail").val().trim(),
     password: $("#userPassword").val().trim() 
   }
-
+  console.log(userInfo);
   let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   let format = !!(userInfo.email.match(regex));
 
@@ -15,7 +15,16 @@ $("#userSubmit").on("click", function(event) {
     return
   }
 
-  $.get("api/users", userInfo)  
+  $.get("api/users", userInfo).then(function(data){
+    if(data.message){
+      alert("Password or email incorrect. Please try again or register to the site.")
+    } else {
+      localStorage.clear();
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("userId", data.userId);
+      window.location.href = "/welcome";
+    }
+  })
 });
 
 
