@@ -50,8 +50,15 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".update", function() {
-    console.log($(this).attr("id"));
-    // need to work on the update/put method
+    // let id = $(this).attr("id");
+    window.location.href = "/updateParty";
+    // $.ajax({
+    //   method: "PUT",
+    //   url: "/api/parties" + id,
+    //   data: party      
+    // }).then(function() {
+    //   window.location.href = "/myParties";
+    // });
   });
 
   $(document).on("click", ".delete", function() {

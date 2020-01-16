@@ -42,4 +42,8 @@ module.exports = function(app) {
   app.get("/*", function(req, res) {
     res.render("404");
   });
+
+  app.get("/updateParty", function(req, res) {
+    res.render("updateParty");
+  });
 };
