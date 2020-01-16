@@ -3,10 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/users", function(req, res) {
-    let email = req.query.email
-    let password = req.query.password
+    let email = req.query.email;
+    let password = req.query.password;
     console.log(email);
-    console.log(password)
+    console.log(password);
     console.log("connected");
     db.User.findOne({
       where: {
@@ -20,6 +20,29 @@ module.exports = function(app) {
         res.json({message: "failed"})
       }
 
+    });
+  });
+
+  app.get("/api/rsvp/:partycode", function(req, res) {
+    let partyCode = req.params.partycode;
+    console.log(partyCode);
+    db.Party.findOne({
+      where: {
+        partyCode: req.params.partycode
+      }
+    }).then(function(dbParties) {
+      if(dbParties){
+        res.json({
+          name: dbParties.name,
+          occasion: dbParties.occasion,
+          location: dbParties.location,
+          date: dbParties.date,
+          time: dbParties.time,
+          organizer: dbParties.userId
+        })
+      } else {
+        res.json({message: "failed"})
+      }
     });
   });
 };
