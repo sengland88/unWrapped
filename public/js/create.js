@@ -1,6 +1,8 @@
+console.log(localStorage.getItem("userId"))
+
 $("#createSubmit").on("click", function(event) {
   event.preventDefault();
-  console.log("this works");
+  console.log("this works"); 
 
   let name = $("#partyName").val().trim();
   let location = $("#partyLocation").val();
@@ -26,8 +28,13 @@ $("#createSubmit").on("click", function(event) {
     occasion: type,
     location: location,
     date: date,
-    time: time
+    time: time,
+    UserId: localStorage.getItem("userId")
   }
   
-  $.post("api/parties", newParty)
+  $.post("api/parties", newParty).then(function(data) {
+    $("#createForm").hide()
+    $("#createConfirm").text(data)
+    console.log(data)
+  });
 });

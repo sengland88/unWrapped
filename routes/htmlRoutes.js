@@ -35,6 +35,10 @@ module.exports = function(app) {
     res.render("parties");
   });
 
+  app.get("/myParties", function(req, res) {
+    res.render("myParties");
+  });
+
   app.get("/*", function(req, res) {
     res.render("404");
   });

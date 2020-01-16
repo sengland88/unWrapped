@@ -14,9 +14,9 @@ module.exports = function(app) {
         password: req.query.password
       }
     }).then(function(dbUsers) {
-      if(dbUsers){
+      if(dbUsers) {
         res.json({name: dbUsers.firstName, userId: dbUsers.id})
-      }else {
+      } else {
         res.json({message: "failed"})
       }
 
@@ -33,6 +33,7 @@ module.exports = function(app) {
     }).then(function(dbParties) {
       if(dbParties){
         res.json({
+          partyId: dbParties.id,
           name: dbParties.name,
           occasion: dbParties.occasion,
           location: dbParties.location,
@@ -42,6 +43,23 @@ module.exports = function(app) {
         })
       } else {
         res.json({message: "failed"})
+      }
+    });
+  });
+
+  app.get("/api/parties/:user", function(req, res) {
+    let user = req.params.user;
+    console.log(user);
+    db.Party.findAll({
+      where: {
+        UserId: user
+      }
+    }).then(function(dbParties) {
+      console.log(dbParties)
+      if(dbParties){
+        res.json({dbParties})
+      } else {
+        res.json({message: "You have no parties"})
       }
     });
   });
