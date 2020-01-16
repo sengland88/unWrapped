@@ -1,9 +1,3 @@
-var loggedIn = false;
-
-if (!loggedIn) {
-  $("#sideBar").hide()
-}
-
 $("#userSubmit").on("click", function(event) {
   event.preventDefault();
   console.log("this works");
@@ -25,7 +19,8 @@ $("#userSubmit").on("click", function(event) {
     if(data.message){
       alert("Password or email incorrect. Please try again or register to the site.")
     } else {
-      loggedIn = localStorage.setItem("loggedIn", true)
+      loggedIn = localStorage.setItem("loggedIn", true);
+      $("#sideBar").show()
       localStorage.clear();
       localStorage.setItem("name", data.name);
       localStorage.setItem("userId", data.userId);
@@ -34,14 +29,12 @@ $("#userSubmit").on("click", function(event) {
   })
 });
 
-
-
 $("#userCreate").on("click", function(event) {
   event.preventDefault();
   console.log("this works");
 
   let newUserInfo = {
-    firstName: $("#firstName").val().trim
+    firstName: $("#firstName").val().trim(),
     lastName: $("#lastName").val().trim(),
     email: $("#userEmail").val().trim(),
     address: $("#userAddress").val().trim(),
@@ -56,7 +49,10 @@ $("#userCreate").on("click", function(event) {
   if (!format) return
 
   $.post("api/users", newUserInfo).then(function(data) {
-    loggedIn = localStorage.setItem("loggedIn", true)
+    console.log(data)
+    localStorage.setItem("name", data.firstName);
+    localStorage.setItem("userId", data.id);
+    window.location.href = "/welcome";
   })
   
 });

@@ -2,7 +2,7 @@ var db = require("../models");
 var randomize = require('randomatic');
 
 module.exports = function(app) {
-  // Create a new example
+
   app.post("/api/users", function(req, res) {
     db.User.create(req.body).then(function(data) {
       console.log("Successful");
@@ -21,13 +21,30 @@ module.exports = function(app) {
       date: req.body.date,
       time: req.body.time,
       partyCode: party,
-      UserId: 1 //this will need to change
+      UserId: req.body.UserId
     }
 
     console.log(newParty)
 
-    db.Party.create(newParty).then(function(data) {
+    db.Party.create(newParty).then(function(data) {      
+      console.log(party)
       console.log("Successful");
+      console.log(data)
+      res.json(data);
+    });
+  });
+
+  app.post("/api/rsvp", function(req, res) {
+
+    let rsvp = {
+      PartyId: req.body.id,
+      UserId: req.body.user
+
+    }
+
+    db.Rsvp.create(rsvp).then(function(data) {      
+      console.log("Successful");
+      console.log(data)
       res.json(data);
     });
   });
