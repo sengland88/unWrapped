@@ -7,15 +7,16 @@ $("#rsvpBtn").on("click", function(event) {
     console.log("Please enter in your party code.")
     return;
   }
-  $.get("api/parties", partyCode).then(function(data){
+  $.get("/api/rsvp/" + partyCode).then(function(data){
     if(data.message) {
       alert("Your party code was not found. Please make sure it is entered correctly.")
     } else {
-      console.log(data)
-      window.location.href = "/welcome";
-      
+      console.log(`${data.name}
+        ${data.occasion}
+        ${data.location}
+        ${data.date}
+        ${data.time}`)
+      // window.location.href = "/welcome";
     }
   })
   });
-  
-

@@ -23,12 +23,12 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/parties", function(req, res) {
-    let partyCode = req.query.partyCode;
+  app.get("/api/rsvp/:partycode", function(req, res) {
+    let partyCode = req.params.partycode;
     console.log(partyCode);
     db.Party.findOne({
       where: {
-        partyCode: req.query.partyCode
+        partyCode: req.params.partycode
       }
     }).then(function(dbParties) {
       if(dbParties){
