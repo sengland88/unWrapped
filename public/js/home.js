@@ -11,7 +11,7 @@ $("#userSubmit").on("click", function(event) {
   let format = !!(userInfo.email.match(regex));
 
   if (userInfo.email === "" || userInfo.password === "" || !format ) {
-    console.log("error")
+    alert("Please complete all fields.")
     return
   }
 

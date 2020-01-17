@@ -1,5 +1,3 @@
-console.log(localStorage.getItem("userId"))
-
 $("#createSubmit").on("click", function(event) {
   event.preventDefault();
   console.log("this works"); 
