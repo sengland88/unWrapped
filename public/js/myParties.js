@@ -53,33 +53,50 @@ $(document).ready(function() {
     }
 
   });
-
+  $(".updateParty").hide();
   $(document).on("click", ".update", function() {
+    $(".table").hide();
    let id = $(this).attr("id")
    console.log(id)
 
    $.get("/api/parties/update/" + id).then(function(data){
     db = data.dbParty;
     console.log(db)
+    $(".updateParty").show()
     let partyInfo = {      
       partyName: db.name,
-      occasion: db.occasion,
+      occasion: db.occasion.value,
       location: db.location,
+      date: db.date,
       time: db.time,
      }
+     $("#partyName1").append(partyName);
+     console.log(partyName);
+     $("#partyLocation1").append(location);
+     console.log(location);
+     $("#partyType1").append(occasion);
+     console.log(occasion);
+     $("#partyDate1").append(date);
+     $("#partyTime1").append(time);
      console.log("this is the then.")
      console.log(partyInfo)
-       window.location.href = "/updateParty";
    });     
-  
-  //   $.ajax({
-  //     method: "PUT",
-  //     url: "/api/parties" + id,
-  //     data: party      
-  //   }).then(function() {
-  //     window.location.href = "/myParties";
-  //   });
    });
+
+   $("#updateSubmit").on("click", function(event){
+     console.log("button working")
+     event.preventdefault();
+     let id = $(this).attr("id");
+     console.log(id);
+    $.ajax({
+      method: "PUT",
+      url: "/api/parties",
+      data: partyInfo      
+    }).then(function(data) {
+      console.log(data)
+      // window.location.href = "/myParties";
+    });
+   })
 
   $(document).on("click", ".delete", function() {
     let id = $(this).attr("id");
