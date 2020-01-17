@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "school",
+    "password": "",
     "database": "unwrapped_db",
     "host": "localhost",
     "dialect": "mysql"

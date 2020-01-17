@@ -53,18 +53,18 @@ $(document).ready(function() {
    let id = $(this).attr("id")
    console.log(id)
 
-  //  $.get("/api/parties/" + id).then(function(data){
-  //   db = data.dbParties;
+   $.get("/api/parties/update/" + id).then(function(data){
+    // db = data.dbParties;
 
-  //   let partyInfo = {      
-  //     partyName: db.name,
-  //     occasion: db.occasion,
-  //     location: db.location,
-  //     time: db.time,
-  //    }
-  //    console.log("this is the then.")
-  //    console.log(partyInfo)
-  //  });
+    // let partyInfo = {      
+    //   partyName: db.name,
+    //   occasion: db.occasion,
+    //   location: db.location,
+    //   time: db.time,
+    //  }
+    //  console.log("this is the then.")
+    //  console.log(partyInfo)
+   });
   //  console.log(id);
   
    
