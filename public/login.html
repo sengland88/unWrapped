@@ -5,12 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>This is the LOGIN PAGE</title>
+
+      <!-- bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
-    <p>login form here</p>
-
-    <p>To register, <a href="/register">click here.</a></p>
+    <div id="loginPage">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <h2>This is our Login Page</h2>
     
+                    <form>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" id="userEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="text" class="form-control" id="userPassword">
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary" id="userSubmit">Submit</button>
+                    </form>                    
+                    <p>To register, <a href="/register">click here.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/home.js"></script>    
 </body>
 </html>
