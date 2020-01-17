@@ -66,18 +66,18 @@ module.exports = function(app) {
 
   app.get("/api/parties/update/:id", function(req, res) {
     console.log("connected")
-    // let id = req.params.id;
-    // console.log(id);
-    // db.Party.findOne({
-    //   where: {
-    //     id: id
-    //   }
-    // }).then(function(dbParty){
-    //   if(dbParty){
-    //     res.json({dbParty})
-    //   } else {
-    //     res.json({message: "Party not found"})
-    //   }
-    // });
+    let id = req.params.id;
+    console.log(id);
+    db.Party.findOne({
+      where: {
+        id: id
+      }
+    }).then(function(dbParty){
+      if(dbParty){
+        res.json({dbParty})
+      } else {
+        res.json({message: "Party not found"})
+      }
+    });
   });
 };
