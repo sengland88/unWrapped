@@ -53,16 +53,17 @@ $(document).ready(function() {
     }
 
   });
-  $(".updateParty").hide();
+  // $(".updateParty").hide();
   $(document).on("click", ".update", function() {
     $(".table").hide();
+    $(".updateParty").show()
    let id = $(this).attr("id")
    console.log(id)
 
    $.get("/api/parties/update/" + id).then(function(data){
     db = data.dbParty;
     console.log(db)
-    $(".updateParty").show()
+    
     let partyInfo = {      
       partyName: db.name,
       occasion: db.occasion.value,
@@ -70,33 +71,31 @@ $(document).ready(function() {
       date: db.date,
       time: db.time,
      }
-     $("#partyName1").append(partyName);
-     console.log(partyName);
-     $("#partyLocation1").append(location);
-     console.log(location);
-     $("#partyType1").append(occasion);
-     console.log(occasion);
-     $("#partyDate1").append(date);
-     $("#partyTime1").append(time);
-     console.log("this is the then.")
-     console.log(partyInfo)
+    //  $("#partyName1").append(partyName);
+    //  console.log(partyName);
+    //  $("#partyLocation1").append(location);
+    //  console.log(location);
+    //  $("#partyType1").append(occasion);
+    //  console.log(occasion);
+    //  $("#partyDate1").append(date);
+    //  $("#partyTime1").append(time);
+    //  console.log("this is the then.")
+    //  console.log(partyInfo)
    });     
    });
 
    $("#updateSubmit").on("click", function(event){
      console.log("button working")
-     event.preventdefault();
-     let id = $(this).attr("id");
-     console.log(id);
+    //  event.preventdefault();
+     
     $.ajax({
       method: "PUT",
-      url: "/api/parties",
-      data: partyInfo      
+      url: "/api/parties/update/new",      
     }).then(function(data) {
       console.log(data)
       // window.location.href = "/myParties";
     });
-   })
+   });
 
   $(document).on("click", ".delete", function() {
     let id = $(this).attr("id");
