@@ -1,26 +1,27 @@
 var db = require("../models");
+const path = require("path");
 
 module.exports = function(app) {
   // Load index page
 
   app.get("/", function(req, res) {
-    res.render("main");
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
   app.get("/login", function(req, res) {
-    res.render("login");
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   app.get("/register", function(req, res) {
-    res.render("register");
+    res.sendFile(path.join(__dirname, "../public/register.html"));
+  });
+
+  app.get("/about", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/about.html"));
   });
 
   app.get("/welcome", function(req, res) {
     res.render("welcome");
-  });
-
-  app.get("/about", function(req, res) {
-    res.render("about");
   });
 
   app.get("/create", function(req, res) {
@@ -38,12 +39,14 @@ module.exports = function(app) {
   app.get("/myParties", function(req, res) {
     res.render("myParties");
   });
-
-  app.get("/*", function(req, res) {
-    res.render("404");
-  });
-
+  
   app.get("/updateParty", function(req, res) {
     res.render("updateParty");
   });
+
+  app.get("/*", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/404.html"));
+  });
+
+
 };

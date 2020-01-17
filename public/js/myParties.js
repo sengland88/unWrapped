@@ -50,15 +50,16 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".update", function() {
-    // let id = $(this).attr("id");
-    window.location.href = "/updateParty";
-    // $.ajax({
-    //   method: "PUT",
-    //   url: "/api/parties" + id,
-    //   data: party      
-    // }).then(function() {
-    //   window.location.href = "/myParties";
-    // });
+    let id = $(this).attr("id");
+    // window.location.href = "/updateParty";
+    $.ajax({
+      method: "PUT",
+      url: "/api/parties/" + id,
+    }).then(function(data) {
+      console.log("success!")
+      // console.log(data)
+      // window.location.href = "/myParties";
+    });
   });
 
   $(document).on("click", ".delete", function() {
