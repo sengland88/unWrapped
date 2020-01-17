@@ -64,10 +64,10 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/parties/:id", function(req, res) {
+  app.get("/api/parties/update/:id", function(req, res) {
     console.log("connected")
-    let id = req.params.id;
-    console.log(id);
+    // let id = req.params.id;
+    // console.log(id);
     // db.Party.findOne({
     //   where: {
     //     id: id
