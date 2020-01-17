@@ -32,7 +32,8 @@ $("#createSubmit").on("click", function(event) {
   
   $.post("api/parties", newParty).then(function(data) {
     $("#createForm").hide()
-    $("#createConfirm").text(data)
+    console.log(data)
+    $("#createConfirm").text(data.name)
     console.log(data)
   });
 });

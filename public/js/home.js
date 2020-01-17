@@ -7,16 +7,15 @@ $("#userSubmit").on("click", function(event) {
     password: $("#userPassword").val().trim() 
   }
   console.log(userInfo);
-  let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  let format = !!(userInfo.email.match(regex));
+  let isEmailValid = emailFormat(userInfo.email)
 
-  if (userInfo.email === "" || userInfo.password === "" || !format ) {
+  if (!isEmailValid || !userInfo.password) {
     alert("Please complete all fields.")
     return
   }
 
   $.get("api/users", userInfo).then(function(data){
-    if(data.message){
+    if(data.message) {
       alert("Password or email incorrect. Please try again or register to the site.")
     } else {
       loggedIn = localStorage.setItem("loggedIn", true);
@@ -41,34 +40,36 @@ $("#userCreate").on("click", function(event) {
     password: $("#userPassword").val().trim(),
   }
 
-  let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  let format = !!(newUserInfo.email.match(regex));
+  let isEmailValid = emailFormat(newUserInfo.email)
+  let isEmptyString = checkForEmptyEntries(newUserInfo)
 
-  //need validating for newUserInfo
-  //try using functions below.
-  if (!format) return
+  if (!isEmailValid) {
+    alert("Please complete all fields.")
+    return
+  }
 
   $.post("api/users", newUserInfo).then(function(data) {
     console.log(data)
     localStorage.setItem("name", data.firstName);
     localStorage.setItem("userId", data.id);
     window.location.href = "/welcome";
-  })
+  });
   
 });
 
 
 function emailFormat(email) {
-
   let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  let format = !!(email.match(regex));
-
-  if (!format) return
+  let format = (email.match(regex));  
+  if (!email || !format ) {
+    return false
+  }
+  return true
 }
 
-function checkForEmptyEntries(entry) {
+function checkForEmptyEntries(entry) { 
   for (let key in entry) {
-    if (entry[key] === "") {
+    if (!entry[key]) {
       return false
     }
   }
