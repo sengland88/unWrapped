@@ -50,17 +50,31 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".update", function() {
-    let id = $(this).attr("id");
-    // window.location.href = "/updateParty";
-    $.ajax({
-      method: "PUT",
-      url: "/api/parties/" + id,
-    }).then(function(data) {
-      console.log("success!")
-      // console.log(data)
-      // window.location.href = "/myParties";
-    });
-  });
+   let id = $(this).attr("id")
+   console.log(id)
+
+   $.get("/api/parties/update/" + id).then(function(data){
+    db = data.dbParty;
+    console.log(db)
+    let partyInfo = {      
+      partyName: db.name,
+      occasion: db.occasion,
+      location: db.location,
+      time: db.time,
+     }
+     console.log("this is the then.")
+     console.log(partyInfo)
+       window.location.href = "/updateParty";
+   });     
+  
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/api/parties" + id,
+  //     data: party      
+  //   }).then(function() {
+  //     window.location.href = "/myParties";
+  //   });
+   });
 
   $(document).on("click", ".delete", function() {
     let id = $(this).attr("id");
