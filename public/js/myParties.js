@@ -13,27 +13,60 @@ $(document).ready(function() {
   $.get("/api/parties/" + user).then(function(data) {    
 
     let db = data.dbParties
+    let photo
 
     for (let i = 0; i < db.length; i++) {
       console.log("looping")
       console.log(db[i].name)
+      console.log(db[i].occasion)
 
-      let tRow = $("<tr>")
+      switch (db[i].occasion) {
+        case "wedding":
+          photo = "imgs/wedding.jpg"
+          break;
+          case "bridal":
+            photo = "imgs/bridal.jpg"
+          break;
+          case "baby":
+            photo = "imgs/baby.jpg"
+          break;
+          case "birthday":
+            photo = "imgs/ballons.jpg"
+          break;  
+        default:
+          break;
+      }
 
-      let partyName = $("<td class='align-middle'>").html(db[i].name)
-      let occasion = $("<td class='align-middle'>").html(db[i].occasion)
-      let location = $("<td class='align-middle'>").html(db[i].location)
-      let date = $("<td class='align-middle'>").html(db[i].date)
-      let time = $("<td class='align-middle'>").html(db[i].time)
-      let partyCode = $("<td class='align-middle'>").html(db[i].partyCode);
+      console.log(db[i].occasion);
 
-      var updateBtn = $("<button>");
+      let thediv = $("<div>")
+                    .addClass("card m-2 p-1")
+                    .addClass("theCard")
+                    .attr("style", "width: 18rem;")
+
+      let theImg = $("<img>")
+                    .attr("src", photo)
+                    .attr("alt", "")
+                    .addClass("card-img-top")
+
+      let divBody = $("<div>")
+                    .addClass("card-body")
+
+      let pTag = $("<p>")
+                  .addClass("card-text")
+                  .html(`Party Name: ${db[i].name} <br> 
+                  Occasion: ${db[i].occasion} <br>
+                  Location: ${db[i].location}<br>
+                  Date: ${db[i].date} <br>
+                  Party Code: ${db[i].partyCode}`)
+
+    var updateBtn = $("<button>");
 
       updateBtn.attr("id", db[i].id);
-      updateBtn.addClass("update")
+      updateBtn.addClass("update m-1")
       updateBtn.addClass("btn btn-danger")
       updateBtn.addClass("btn-sm")
-      updateBtn.text(" * ");
+      updateBtn.text(" Update ");
 
       var deleteBtn = $("<button>");
 
@@ -41,15 +74,17 @@ $(document).ready(function() {
       deleteBtn.addClass("delete")
       deleteBtn.addClass("btn btn-danger")
       deleteBtn.addClass("btn-sm")
-      deleteBtn.text(" X ");
+      deleteBtn.text(" Delete ");
 
       let applyUpdate = $("<td class='align-middle'>").html(updateBtn);
       let applydelete = $("<td class='align-middle'>").html(deleteBtn);
 
-  
-      tRow.append(partyName, occasion, location, date, time, partyCode, applyUpdate, applydelete)
-  
-      $("#saved").prepend(tRow)  
+      thediv.append(theImg)
+      thediv.append(divBody)
+      thediv.append(pTag)
+      thediv.append(applyUpdate)
+      thediv.append(applydelete)
+      $("#myParties").append(thediv)
     }
 
   });  
