@@ -7,19 +7,20 @@
   /* z-index: 1; */
   top: 0;
   overflow-x: hidden;
+  padding-top: 1%;
 }
 
 .sideBar a {
   padding: 30px 5px 30px 5px;
   text-decoration: none;
   font-size: 18px;
-  color: #818181;
+  color: white ;
   display: block;
   border-bottom: #818181 solid 1px;
 }
 
 .sideBar a:hover {
-  color: #f1f1f1;
+  color: greenyellow;
 }
 
 .theCard {
