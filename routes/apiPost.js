@@ -4,9 +4,17 @@ var randomize = require('randomatic');
 module.exports = function(app) {
 
   app.post("/api/users", function(req, res) {
-    db.User.create(req.body).then(function(data) {
-      console.log("Successful");
-      res.json(data);
+    db.User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function(data) {
+      if (data) {
+        res.json({message: "Error - email already exists"})
+      } else {db.User.create(req.body).then(function(data) {
+        console.log("Successful");
+        res.json(data);
+      })};
     });
   });
 

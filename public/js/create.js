@@ -31,6 +31,9 @@ $("#createSubmit").on("click", function(event) {
     time:time,
     UserId: localStorage.getItem("userId")
   }
+
+  
+
   
   $.post("api/parties", newParty).then(function(data) {
     $("#createForm").hide();

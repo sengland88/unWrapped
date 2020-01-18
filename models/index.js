@@ -1,4 +1,5 @@
 "use strict";
+require("dotenv").config()
 
 var fs = require("fs");
 var path = require("path");
@@ -14,7 +15,7 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(
     config.database,
     config.username,
-    config.password,
+    process.env.password,
     config
   );
 }
