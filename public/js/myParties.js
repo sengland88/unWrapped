@@ -45,6 +45,11 @@ $(document).ready(function() {
 
       console.log(db[i].occasion);
 
+      let formatDate = moment(db[i].date).format('MMMM Do YYYY');
+      let formatTime = moment(db[i].time, "HH:MM").format("LT");
+
+      console.log(formatDate)
+    
       let thediv = $("<div>")
                     .addClass("card m-2 p-1")
                     .addClass("theCard")
@@ -63,8 +68,9 @@ $(document).ready(function() {
                   .html(`Party Name: ${db[i].name} <br> 
                   Occasion: ${db[i].occasion} <br>
                   Location: ${db[i].location}<br>
-                  Date: ${db[i].date} <br>
-                  Party Code: ${db[i].partyCode}`)
+                  Date: ${formatDate} <br>
+                  Party Code: ${db[i].partyCode} <br>
+                  Time: ${formatTime}`)
 
     var updateBtn = $("<button>");
 
