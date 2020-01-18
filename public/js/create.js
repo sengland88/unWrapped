@@ -31,17 +31,14 @@ $("#createSubmit").on("click", function(event) {
     time:time,
     UserId: localStorage.getItem("userId")
   }
-
-  
-
   
   $.post("api/parties", newParty).then(function(data) {
     $("#createForm").hide();
     $("#createConfirm").show();
+    console.log(data)
 
     let formatDate = moment(newParty.date).format('MMMM Do YYYY');
     let formatTime = moment(newParty.time, "HH:MM").format("LT");
-    let partyDiv = $("<div>").addClass("createdParty");
     let photo
 
     switch (newParty.occasion) {
@@ -66,15 +63,7 @@ $("#createSubmit").on("click", function(event) {
       default:
         break;
     }
-
-    let partyThings = $("<p>")
-    .addClass("partyInfo")
-    .html(`Party Name: ${newParty.name} <br>
-    Occasion: ${newParty.occasion} <br>
-    Location: ${newParty.location} <br>
-    Date: ${formatDate} <br>
-    Time: ${formatTime}`)
-    
+  
     let theImg = $("<img>")
     .attr("src", photo)
     .attr("alt", "Responsive image")
@@ -86,7 +75,9 @@ $("#createSubmit").on("click", function(event) {
 
     $("#cardText").html(`Occasion: ${newParty.occasion} <br>
     Location: ${newParty.location} <br>
-    Date: ${newParty.date} <br>
-    Time: ${newParty.time}`)
+    Date: ${formatDate} <br>
+    Time: ${formatTime} <br>
+    Party Code: ${data.partyCode}
+    `)
   });
 });

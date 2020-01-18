@@ -1,3 +1,7 @@
+body {
+  background-color: #DBF1FF;
+}
+
 .sideBar {
   text-align: center;
   background-color:	#696969;
@@ -25,4 +29,8 @@
 
 .theCard {
   display: inline-block;
+}
+
+#cardBody {
+  background-color: red;
 }

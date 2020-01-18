@@ -29,34 +29,56 @@ $("#rsvpBtn").on("click", function(event) {
       $("#rsvpForm").hide();
       $("#rsvpInfo").show();
 
+      let photo;
+
+      switch (organizer.occasion) {
+        case "Wedding":
+          photo = "imgs/wedding.jpg"
+          break;
+          case "Bridal":
+            photo = "imgs/bridal.jpg"
+          break;
+          case "Baby":
+            photo = "imgs/baby.jpg"
+          break;
+          case "Birthday":
+            photo = "imgs/ballons.jpg"
+          break;
+          case "Retirement":
+            photo = "imgs/ballons.jpg"
+          break;
+          case "Retirement":
+            photo = "imgs/ballons.jpg"
+          break;
+        default:
+          break;
+      }
+
       let formatDate = moment(organizer.date).format('MMMM Do YYYY');
       let formatTime = moment(organizer.time, "HH:MM").format("LT");
 
-      let rsvpDiv = $("<div>")
-                      .addClass("partyUpdate")
-      
-      let rsvpParty = $("<h4>")
-                      .addClass("myParty")
-      
-      let partyInfo = $("<p>")
-                      .addClass("partyInfo")
-                      .html(`Party Name: ${organizer.name} <br>
-                      Occasion: ${organizer.occasion} <br>
-                      Location: ${organizer.location} <br>
-                      Date: ${formatDate} <br>
-                      Time: ${formatTime}`)
+      let theImg = $("<img>")
+      .attr("src", photo)
+      .attr("alt", "Responsive image")
+      .addClass("img-fluid")
+  
+      $("#img").append(theImg)
+  
+      $("#cardTitle").html(`${organizer.name}`)
+  
+      $("#cardText").html(`Occasion: ${organizer.occasion} <br>
+      Location: ${organizer.location} <br>
+      Date: ${formatDate} <br>
+      Time: ${formatTime}`)
 
-
-      rsvpDiv.append(rsvpParty);
-      rsvpDiv.append(partyInfo);
-      $("#rsvpText").append(rsvpDiv);
     }
   });
 });
 
 $("#rsvpConfirm").on("click", function(event) {
   event.preventDefault();
+    console.log("works!")
   $.post("/api/rsvp", organizer).then(function(data) {
-    //post on RSVP table
+    console.log("success!")
   });
 });

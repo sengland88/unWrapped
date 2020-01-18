@@ -1,21 +1,35 @@
+<img src="imgs/rsvp.jpg" class="img-fluid mt-1 mb-2" alt="Responsive image">
 
-  <h2>Unwrapped - This is our rsvp Page!</h2>
+<p>Wonderful - looks live you've been invited to celebrate for a special occasion!</p>
 
-  <p>Please enter your party code provided by the organizer</p>
+<p>Please enter the five character party code provided by the organizer.</p>
 
-  <form id="rsvpForm">
-    <div class="form-group">
-      <label>Party Code</label>
-      <input type="text" class="form-control" id="partyCode">
-    </div>
-
-    <button type="submit" class="btn btn-primary" id="rsvpBtn">Look Up</button>
-  </form>
-
-  <div id="rsvpInfo">
-  <div id="rsvpText"></div>
-  <button type="submit" class="btn btn-primary" id="rsvpConfirm">RSVP</button>
+<form id="rsvpForm">
+  <div class="form-group">
+    <label>Party Code</label>
+    <input type="text" class="form-control" id="partyCode">
   </div>
+
+  <button type="submit" class="btn btn-primary" id="rsvpBtn">Look Up</button>
+</form>
+
+<div class="m-5" id="rsvpInfo">
+
+  <div class="card mb-3" style="max-width: 540px;" id="cardBody">
+    <div class="row no-gutters">
+      <div class="col-md-4" id="img">
+
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><span id="cardTitle"></span></h5>
+          <p class="card-text" id="cardText"></p>
+            <button type="submit" class="btn btn-primary" id="rsvpConfirm">RSVP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/rsvp.js"></script>
