@@ -1,15 +1,15 @@
-.sidebar {
+.sideBar {
+  text-align: center;
+  background-color:	#696969;
   height: 100%;
-  width: 110px;
+  width: 150px;
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   top: 0;
-  left: 0;
-  background-color: #222;
   overflow-x: hidden;
 }
 
-.sidebar a {
+.sideBar a {
   padding: 30px 5px 30px 5px;
   text-decoration: none;
   font-size: 18px;
@@ -18,7 +18,7 @@
   border-bottom: #818181 solid 1px;
 }
 
-.sidebar a:hover {
+.sideBar a:hover {
   color: #f1f1f1;
 }
 
