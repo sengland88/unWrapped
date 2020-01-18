@@ -21,18 +21,24 @@ $(document).ready(function() {
       console.log(db[i].occasion)
 
       switch (db[i].occasion) {
-        case "wedding":
+        case "Wedding":
           photo = "imgs/wedding.jpg"
           break;
-          case "bridal":
+          case "Bridal":
             photo = "imgs/bridal.jpg"
           break;
-          case "baby":
+          case "Baby":
             photo = "imgs/baby.jpg"
           break;
-          case "birthday":
+          case "Birthday":
             photo = "imgs/ballons.jpg"
-          break;  
+          break;
+          case "Retirement":
+            photo = "imgs/ballons.jpg"
+          break;
+          case "Retirement":
+            photo = "imgs/ballons.jpg"
+          break;
         default:
           break;
       }
