@@ -68,9 +68,9 @@ $(document).ready(function() {
                   .html(`Party Name: ${db[i].name} <br> 
                   Occasion: ${db[i].occasion} <br>
                   Location: ${db[i].location}<br>
-                  Date: ${formatDate} <br>
-                  Party Code: ${db[i].partyCode} <br>
-                  Time: ${formatTime}`)
+                  Date: ${formatDate} <br>                  
+                  Time: ${formatTime} <br>
+                  Party Code: ${db[i].partyCode}`)
 
     var updateBtn = $("<button>");
 
