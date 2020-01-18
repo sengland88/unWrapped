@@ -29,6 +29,9 @@ $("#rsvpBtn").on("click", function(event) {
       $("#rsvpForm").hide();
       $("#rsvpInfo").show();
 
+      let formatDate = moment(organizer.date).format('MMMM Do YYYY');
+      let formatTime = moment(organizer.time, "HH:MM").format("LT");
+
       let rsvpDiv = $("<div>")
                       .addClass("partyUpdate")
       
@@ -40,7 +43,8 @@ $("#rsvpBtn").on("click", function(event) {
                       .html(`Party Name: ${organizer.name} <br>
                       Occasion: ${organizer.occasion} <br>
                       Location: ${organizer.location} <br>
-                      Date: ${organizer.date}`)
+                      Date: ${formatDate} <br>
+                      Time: ${formatTime}`)
 
 
       rsvpDiv.append(rsvpParty);

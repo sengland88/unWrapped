@@ -26,7 +26,7 @@ $("#createSubmit").on("click", function(event) {
     occasion: type,
     location: location,
     date: date,
-    time: time,
+    time:time,
     UserId: localStorage.getItem("userId")
   }
   
@@ -36,6 +36,8 @@ $("#createSubmit").on("click", function(event) {
     $("#partyStuff").show();
     console.log(data);
 
+    let formatDate = moment(newParty.date).format('MMMM Do YYYY');
+    let formatTime = moment(newParty.time, "HH:MM").format("LT");
     let partyDiv = $("<div>").addClass("createdParty");
 
     let myParty = $("<h4>").addClass("myNewParty");
@@ -45,8 +47,8 @@ $("#createSubmit").on("click", function(event) {
     .html(`Party Name: ${newParty.name} <br>
     Occasion: ${newParty.occasion} <br>
     Location: ${newParty.location} <br>
-    Date: ${newParty.date} <br>
-    Time: ${newParty.time}`)
+    Date: ${formatDate} <br>
+    Time: ${formatTime}`)
 
     partyDiv.append(myParty);
     partyDiv.append(partyThings);
