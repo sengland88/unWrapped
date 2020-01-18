@@ -31,9 +31,27 @@ $("#createSubmit").on("click", function(event) {
   }
   
   $.post("api/parties", newParty).then(function(data) {
-    $("#createForm").hide()
-    console.log(data)
-    $("#createConfirm").text(data.name)
-    console.log(data)
+    $("#createForm").hide();
+    console.log(data);
+    $("#partyStuff").show();
+    console.log(data);
+
+    let partyDiv = $("<div>").addClass("createdParty");
+
+    let myParty = $("<h4>").addClass("myNewParty");
+
+    let partyThings = $("<p>")
+    .addClass("partyInfo")
+    .html(`Party Name: ${newParty.name} <br>
+    Occasion: ${newParty.occasion} <br>
+    Location: ${newParty.location} <br>
+    Date: ${newParty.date} <br>
+    Time: ${newParty.time}`)
+
+    partyDiv.append(myParty);
+    partyDiv.append(partyThings);
+    $(".partyStuff").append(partyDiv);
+
+
   });
 });
