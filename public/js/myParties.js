@@ -52,13 +52,15 @@ $(document).ready(function() {
       $("#saved").prepend(tRow)  
     }
 
-  });
-  // $(".updateParty").hide();
+  });  
+
   $(document).on("click", ".update", function() {
     $(".table").hide();
     $(".updateParty").show()
    let id = $(this).attr("id")
    console.log(id)
+
+   localStorage.setItem("partyId", id);
 
    $.get("/api/parties/update/" + id).then(function(data){
     db = data.dbParty;
@@ -84,19 +86,31 @@ $(document).ready(function() {
    });     
    });
 
+   // updated button and form
    $("#updateSubmit").on("click", function(event){
-     console.log("button working")
-    //  event.preventdefault();
-     
+     console.log("button working")  
+     event.preventDefault() 
+
+     var updatedInfo = {
+      id: localStorage.getItem("partyId"),
+      name: $("#updatedName").val().trim(),
+      occasion: $("#updatedType").val(),
+      location: $("#updatedLocation").val().trim(),
+      date: $("#updatedDate").val().trim(),
+      time: $("#updatedTime").val().trim(),
+
+    }
+    console.log(updatedInfo)     
     $.ajax({
       method: "PUT",
-      url: "/api/parties/update/new",      
+      url: "/api/parties/update/party",
+      data: updatedInfo
     }).then(function(data) {
       console.log(data)
-      // window.location.href = "/myParties";
     });
    });
 
+   //delete method
   $(document).on("click", ".delete", function() {
     let id = $(this).attr("id");
 
