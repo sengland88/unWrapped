@@ -28,6 +28,24 @@ $("#rsvpBtn").on("click", function(event) {
       console.log(organizer);
       $("#rsvpForm").hide();
       $("#rsvpInfo").show();
+
+      let rsvpDiv = $("<div>")
+                      .addClass("partyUpdate")
+      
+      let rsvpParty = $("<h4>")
+                      .addClass("myParty")
+      
+      let partyInfo = $("<p>")
+                      .addClass("partyInfo")
+                      .html(`Party Name: ${organizer.name} <br>
+                      Occasion: ${organizer.occasion} <br>
+                      Location: ${organizer.location} <br>
+                      Date: ${organizer.date}`)
+
+
+      rsvpDiv.append(rsvpParty);
+      rsvpDiv.append(partyInfo);
+      $("#rsvpText").append(rsvpDiv);
     }
   });
 });
