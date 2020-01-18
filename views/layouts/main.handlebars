@@ -4,26 +4,38 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="styles/index.css" media="screen" title="no title" charset="utf-8">
   <title>Home Page</title>
+
+  
 </head>
 
-<div id="sideBar">
 
-<p><a href="/welcome">Home</a></p>
-<p><a href="/create">Create</a></p>
-<p><a href="/rsvp">RSVP</a></p>
-<p><a href="/myParties">Your Parties</a></p>
-<p><a href="login.html" id="signOut">Log Out</a></p>
 
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-2">
+        <div class="sideBar">
+          <p><a href="/welcome">Home</a></p>
+          <p><a href="/create">Create</a></p>
+          <p><a href="/rsvp">RSVP</a></p>
+          <p><a href="/myParties">Your Parties</a></p>
+          <p><a href="login.html" id="signOut">Log Out</a></p>
+        </div>
+    </div>
+    <div class="col-sm">
+      <body>
+
+        {{{body}}}
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="/js/index.js"></script>
+      </body>
+    </div>
+  </div>
 </div>
 
 
-<body>
-  {{{body}}}
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/index.js"></script>
-</body>
 
 </html>

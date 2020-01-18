@@ -1,0 +1,27 @@
+.sidebar {
+  height: 100%;
+  width: 110px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  overflow-x: hidden;
+}
+
+.sidebar a {
+  padding: 30px 5px 30px 5px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  border-bottom: #818181 solid 1px;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.theCard {
+  display: inline-block;
+}
