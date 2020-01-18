@@ -1,1 +1,1 @@
-// for the welcome page //
+$("#welcomeName").text(localStorage.getItem("name"));

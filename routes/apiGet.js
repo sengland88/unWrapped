@@ -80,4 +80,31 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.get("/api/users/update/:id", function(req, res) {
+    
+    let id = req.params.id
+    db.Rsvp.findOne({
+      where: {
+        UserId: id
+      },
+      include: [db.User]
+    }).then(function(data){
+      console.log("success!")
+        res.json({data})
+    });
+  });
+
+  app.get("/api/rsvp/guests/:id", function(req, res) {
+    console.log("connected")
+    let id = req.params.id;
+    db.Rsvp.findAll({
+      where: {
+        PartyId: id
+      },
+      include: [db.User]
+    }).then(function(dbParty){
+        res.json({dbParty})
+    });
+  });
 };

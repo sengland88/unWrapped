@@ -1,47 +1,88 @@
-        <h2>Unwrapped - This is my parties Page!</h2>
+<img src="imgs/manage.jpg" class="img-fluid mt-1 mb-2" alt="Responsive image">
 
-        <div id="myParties"></div>
+<p>On this page, you have the ability to manage your parties, which includes updating party information, deleting a
+  party, as well as downloading a guest list. You'll also be able to download your guest list so you can keep track of
+  any gifts you received and who you received them from.</p>
+
+{{!-- area populates with cards dynamically --}}
+<div id="myParties">
+
+</div>
 
 
-            <div class="updateParty">
-              <form id="updateForm">
-                <div class="form-group">
-                  <label>Party Name</label>
-                  <input type="name" class="form-control" id="updatedName">
-                </div>
+{{!-- form that is shown when a user hits update --}}
+<div class="updateParty">
+  <form id="updateForm">
+    <div class="form-group">
+      <label>Party Name</label>
+      <input type="name" class="form-control" id="updatedName">
+    </div>
 
-                <div class="form-group">
-                  <label>Party Location</label>
-                  <input type="text" class="form-control" id="updatedLocation">
-                </div>
+    <div class="form-group">
+      <label>Party Location</label>
+      <input type="text" class="form-control" id="updatedLocation">
+    </div>
 
-                <div class="form-group">
-                  <label>Party Type</label>
-                  <select class="form-control" id="updatedType">
-                    <option selected>Choose...</option>
-                    <option value="bridal">Bridal</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="baby">Baby</option>
-                    <option value="birthday">Birthday</option>
-                  </select>
-                </div>
+    <div class="form-group">
+      <label>Party Type</label>
+      <select class="form-control" id="updatedType">
+        <option selected>Choose...</option>
+        <option value="Bridal">Bridal</option>
+        <option value="Wedding">Wedding</option>
+        <option value="Baby">Baby</option>
+        <option value="Birthday">Birthday</option>
+      </select>
+    </div>
 
-            <div class="form-group">
-              <label>Party Date</label>
-              <input type="date" class="form-control" id="updatedDate" placeholder="MM/DD/YYYY">
-            </div>
+    <div class="form-group">
+      <label>Party Date</label>
+      <input type="date" class="form-control" id="updatedDate" placeholder="MM/DD/YYYY">
+    </div>
 
-            <label>Party Time</label><br>
-            <div class="form-group">
-                <input type="time" id="updatedTime" name="appt" min="00:00" max="23:59">
-            </div>
+    <label>Party Time</label><br>
+    <div class="form-group">
+      <input type="time" id="updatedTime" name="appt" min="00:00" max="23:59">
+    </div>
 
-                <button type="submit" class="btn btn-primary" id="updateSubmit">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <button type="submit" class="btn btn-primary" id="updateSubmit">Submit</button>
+  </form>
+</div>
+
+{{!-- table to hold rsvp'd guest --}}
+<div id="rsvpList">
+  <table class="table text-center align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Guest Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Gift</th>
+        <th scope="col">Thank-You Note</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody id="guestList">
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{{!-- section to update guest info from party --}}
+<div class="mb-5" id="guestUpdateList">
+  <p>Please Update Guest Info Below</p>
+  <p id="guestName"></p>
+  <p >What gift did they get you?</p>
+  <input type="text" id="giftInput"><br><br>
+  <p>Thank You Note Delivered?</p>
+      <select id="guestNote">
+        <option value="0">Not Sent</option>
+        <option value="1">Sent</option>
+      </select>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary" id="guestUpdate">Update Info</button>
+</div>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/myParties.js"></script>
