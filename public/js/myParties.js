@@ -53,7 +53,7 @@ $(document).ready(function() {
     }
 
   });  
-
+$(".updateParty").hide();
   $(document).on("click", ".update", function() {
     $(".table").hide();
     $(".updateParty").show()
@@ -66,23 +66,16 @@ $(document).ready(function() {
     db = data.dbParty;
     console.log(db)
     
-    let partyInfo = {      
-      partyName: db.name,
-      occasion: db.occasion.value,
-      location: db.location,
-      date: db.date,
-      time: db.time,
-     }
-    //  $("#partyName1").append(partyName);
-    //  console.log(partyName);
-    //  $("#partyLocation1").append(location);
-    //  console.log(location);
-    //  $("#partyType1").append(occasion);
-    //  console.log(occasion);
-    //  $("#partyDate1").append(date);
-    //  $("#partyTime1").append(time);
-    //  console.log("this is the then.")
-    //  console.log(partyInfo)
+     $("#updatedName").val(db.name);
+     console.log(db.name);
+     $("#updatedLocation").val(db.location);
+     console.log(db.location);
+     $("#updatedType").val(db.occasion);
+     console.log(db.occasion);
+     $("#updatedDate").val(db.date);
+     $("#updatedTime").val(db.time);
+     console.log("this is the then.")
+     
    });     
    });
 
@@ -108,6 +101,9 @@ $(document).ready(function() {
     }).then(function(data) {
       console.log(data)
     });
+    window.location.href = "/myParties"
+    $(".table").show();
+    $(".updateParty").hide()
    });
 
    //delete method
