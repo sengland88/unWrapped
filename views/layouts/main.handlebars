@@ -7,12 +7,19 @@
   <link rel="stylesheet" href="styles/index.css" media="screen" title="no title" charset="utf-8">
   <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
   <title>unWrapped Portal</title>
-  
+
 </head>
 
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-sm-2">
+<script>
+  if (!localStorage.getItem("userId") || !localStorage.getItem("name")) {
+    window.location.href = "/login"
+  };
+</script>
+
+<body>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-sm-2">
         <div class="sideBar">
           <p><a href="/welcome">Home</a></p>
           <p><a href="/create">Create</a></p>
@@ -20,17 +27,16 @@
           <p><a href="/myParties">Your Parties</a></p>
           <p><a href="login.html" id="signOut">Log Out</a></p>
         </div>
-    </div>
-    
-    <div class="col-sm-9">
-      <body>
+      </div>
+
+      <div class="col-sm-9">
 
         {{{body}}}
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="/js/index.js"></script>
-      </body>
-    </div>
-  </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/js/index.js"></script>
+</body>
+</div>
+</div>
 </div>
 
 

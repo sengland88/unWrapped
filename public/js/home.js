@@ -50,6 +50,10 @@ $("#userCreate").on("click", function(event) {
 
   $.post("api/users", newUserInfo).then(function(data) {
     console.log(data)
+    if (data.message) {
+      alert("email exists!")
+      return
+    }
     localStorage.setItem("name", data.firstName);
     localStorage.setItem("userId", data.id);
     window.location.href = "/welcome";
