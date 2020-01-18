@@ -1,3 +1,5 @@
+$("#createConfirm").hide();
+
 $("#createSubmit").on("click", function(event) {
   event.preventDefault();
   console.log("this works"); 
@@ -32,15 +34,35 @@ $("#createSubmit").on("click", function(event) {
   
   $.post("api/parties", newParty).then(function(data) {
     $("#createForm").hide();
-    console.log(data);
-    $("#partyStuff").show();
-    console.log(data);
+    $("#createConfirm").show();
 
     let formatDate = moment(newParty.date).format('MMMM Do YYYY');
     let formatTime = moment(newParty.time, "HH:MM").format("LT");
     let partyDiv = $("<div>").addClass("createdParty");
+    let photo
 
-    let myParty = $("<h4>").addClass("myNewParty");
+    switch (newParty.occasion) {
+      case "Wedding":
+        photo = "imgs/wedding.jpg"
+        break;
+        case "Bridal":
+          photo = "imgs/bridal.jpg"
+        break;
+        case "Baby":
+          photo = "imgs/baby.jpg"
+        break;
+        case "Birthday":
+          photo = "imgs/ballons.jpg"
+        break;
+        case "Retirement":
+          photo = "imgs/ballons.jpg"
+        break;
+        case "Retirement":
+          photo = "imgs/ballons.jpg"
+        break;
+      default:
+        break;
+    }
 
     let partyThings = $("<p>")
     .addClass("partyInfo")
@@ -49,11 +71,19 @@ $("#createSubmit").on("click", function(event) {
     Location: ${newParty.location} <br>
     Date: ${formatDate} <br>
     Time: ${formatTime}`)
+    
+    let theImg = $("<img>")
+    .attr("src", photo)
+    .attr("alt", "Responsive image")
+    .addClass("img-fluid")
 
-    partyDiv.append(myParty);
-    partyDiv.append(partyThings);
-    $(".partyStuff").append(partyDiv);
+    $("#img").append(theImg)
 
+    $("#cardTitle").html(`${newParty.name}`)
 
+    $("#cardText").html(`Occasion: ${newParty.occasion} <br>
+    Location: ${newParty.location} <br>
+    Date: ${newParty.date} <br>
+    Time: ${newParty.time}`)
   });
 });

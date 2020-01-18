@@ -3,7 +3,7 @@
       
       <img src="imgs/create.jpg" class="img-fluid m-2" alt="Responsive image">
 
-      <form id="createForm">
+      <form id="createForm" class="mb-5">
           <div class="form-group mt-3">
             <label>Party Name</label>
             <input type="name" class="form-control" id="partyName">
@@ -43,9 +43,20 @@
         </form>
 
         <div class="m-5" id="createConfirm">
-          <div class="partyStuff">
-            
-          </div>           
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4" id="img">
+              
+            </div>
+              <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><span id="cardTitle"></span></h5>
+                <p class="card-text" id="cardText"></p>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
