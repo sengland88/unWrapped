@@ -42,7 +42,7 @@ $("#userCreate").on("click", function(event) {
   let isEmailValid = emailFormat(newUserInfo.email)
   let isEmptyString = checkForEmptyEntries(newUserInfo)
 
-  if (!isEmailValid || !isEmptyString) {
+  if (!isEmailValid || isEmptyString) {
     $("#errorMessage").text("Please complete all fields.")
     return
   }
