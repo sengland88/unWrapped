@@ -1,5 +1,16 @@
 body {
   background-color: #DBF1FF;
+  font-family: 'Varela Round', sans-serif;
+}
+
+p {
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 48px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .sideBar {
@@ -32,5 +43,5 @@ body {
 }
 
 #cardBody {
-  background-color: red;
+  background-color: #FFFFDB;
 }

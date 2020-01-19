@@ -46,7 +46,8 @@ $(document).ready(function() {
       let thediv = $("<div>")
         .addClass("card m-1")
         .addClass("theCard")
-        .attr("style", "width: 18rem;");
+        .attr("style", "width: 18rem;")
+        .attr("id", "cardBody");
 
       let theImg = $("<img>")
         .attr("src", photo)
@@ -170,12 +171,13 @@ $(document).ready(function() {
 
   // rsvp list
   $(document).on("click", ".rsvp", function() {
+    $("#norsvp").show();
     $("#rsvpList").show();
     $("#myParties").hide();
     let id = $(this).attr("id");
     localStorage.setItem("partyId", id);
     console.log(id)
-    getRsvpList(id)    
+    getRsvpList(id)
   });
 
   //update guest - gift and thank you
@@ -230,14 +232,13 @@ $(document).ready(function() {
 function getRsvpList(id) {
   $.get("/api/rsvp/guests/" + id).then(function(data) {
 
-    $("tbody").empty();
+    $("tbody").empty();   
 
     let db = data.dbParty;
 
     for (let i = 0; i < db.length; i++) {
-      console.log("looping");
 
-      console.log(db);
+      $("#norsvp").hide();
 
       let tRow = $("<tr>");
 
@@ -276,6 +277,7 @@ function getRsvpList(id) {
       );
 
       $("#guestList").prepend(tRow);
+      
     }
   });
 }

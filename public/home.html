@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>welcome</title>
+    <title>Partying Planning Made Easy</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
@@ -15,34 +15,39 @@
     <!-- jQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/welcome">unWrapped</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center sticky-top" id="navText">
+    <div class="container">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto" id="navText">unWrapped</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+            <span class="navbar-toggler-icon"></span>
         </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-              </li>
-          </ul>
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item navLinks">
+                    <a class="nav-link" href="/register" id="navText">Register</a>
+                </li>
+                <li class="nav-item navLinks">
+                    <a class="nav-link" href="/login" id="navText">Login</a>
+                </li>
+            </ul>
         </div>
-      </nav>
+    </div>
+</nav>
 
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+</div>
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade theRow" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
+            <img src="imgs/unwrapped.jpg" class="d-block w-100 img-fluid" alt="Responsive image" id="coverPic">
+          </div>          
+          <div class="carousel-item">
             <img src="imgs/baby.jpg" class="d-block w-100 img-fluid" alt="Responsive image" id="coverPic">
           </div>
           <div class="carousel-item">
@@ -65,12 +70,88 @@
         </a>
       </div>
 
-    <div class="container">
-        <div class="row">
+      <div class="container theRow">
+
+        <div class="row theRow">
+          <div class="col-sm theRow">
+            <h2>Welcome to unWrapped — a party planning application</h2>
+
+            <p>Let's face it, party planning takes a lot of time, and throwing an excellent party takes more time than most of us have. From keeping track of the guest list to remembering who gave you what gift, it is enough to make anyone want to pull their hair out. That is where unWrapped comes in.</p>
+
+            <strong><p>We help to make things simple.</p></strong>            
+
+            <p>All you will need to do is create the party and supply your guests with the party code. They'll use unWrapped to RSVP to your party. Not only will we keep track of the guest list, we also help remembering who gave you what gift and if you sent a thank-you note.</p>
+
+            <p>So, if you're planning your next party, go ahead and sign up. We won't alleviate all of your stress — you still have to order the cake — but we will certainly make it easier so you can enjoy making memories to last a life time.</p>
+
+
+          </div>
+        </div>
+
+        <h2 class="text-center">Meet the Creators</h2>
+        <div class="row mt-5">          
           <div class="col-sm text-center">
-            Welcome to unWrapped.
+
+
+            <h3>Nadia Kadri</h3>
+
+            <img src="imgs/nadia.png" alt="">
+
+
+          </div>
+
+          <div class="col-sm pt-5">
+            <p> Nadia Kadri is an aspiring software engineer, who graduated from UCF in May 2018 with a bachelor's degree in finance. Since graduation, Nadia has been working at Lockheed Martin as a financial analyst. By nature, she is very analytical and organized person — she's survives off logic, in fact. She loves discovering patterns in her work, which is one of the main reasons she drawn to coding.</p>
+
+            <p>To access Nadia's GitHub, <a href="https://github.com/Nadia-Kadri">click here</a>.<br>
+            To access Nadia's Portfolio, <a href="https://nadia-kadri.github.io/nadia-portfolio/">click here</a>.<br>
+            To access Nadia's LinkedIn, <a href="https://www.linkedin.com/in/nadia-kadri-334415b3/">click here</a>.</p>          
+
+
+          </div>
+        </div>
+
+        <div class="row mt-5">          
+          <div class="col-sm text-center">
+            <h3>Roy Davis</h3>
+
+            <img src="imgs/roy.png" alt="">
+
+
+          </div>
+
+          <div class="col-sm pt-5">
+            <p> Roy Davis is an inspiring web developer/software engineer. With having spent the past 20 years in the retail industry, Roy has developed a strong work ethic. On top of pursuing a web development certificate through UCF's Coding Bootcamp, he also holds an associate in science in computer technology.</p>
+
+            <p>To access Roy's GitHub, <a href="https://github.com/Ryby1024">click here</a>.<br>
+              To access Roy's Portfolio, <a href="https://ryby1024.github.io/Portfolio/">click here</a>.<br>
+              To access Roy's LinkedIn, <a href="https://www.linkedin.com/in/roy-davis-a0457265/">click here</a>.</p>
+            
+
+
+          </div>
+        </div>
+
+        <div class="row mt-5">          
+          <div class="col-sm text-center">
+            <h3>Shelby England</h3>
+
+            <img src="imgs/shelby.png" alt="">
+
+
+          </div>
+
+          <div class="col-sm pt-5 mb-5">
+            <p> As a creatively-charged communication professional who turned web and software developer, Shelby England is equipped with the technical know-how to turn creative concepts into reality. In addition to holding a bachelor's degree from UCF, he also has over five years of working in higher education. He is currently pursing a certificate in web development from UCF's Coding Bootcamp.</p>
+
+            <p>To access Shelby's GitHub, <a href="https://github.com/sengland88">click here</a>.<br>
+              To access Shelby's Portfolio, <a href="https://shelbyengland.com/">click here</a>.<br>
+              To access Shelby's LinkedIn, <a href="https://www.linkedin.com/in/shelby-england-0137976b/">click here</a>.</p>
+
+
           </div>
         </div>
       </div>
 </body>
 </html>
+
