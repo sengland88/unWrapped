@@ -8,12 +8,10 @@ $("#rsvpBtn").on("click", function(event) {
   partyCode = $("#partyCode").val().trim();
   console.log(partyCode);
   if (partyCode === "") {
-    console.log("Please enter in your party code.");
     return;
   }
   $.get("/api/rsvp/" + partyCode).then(function(data) {
     if (data.message) {
-      // eslint-disable-next-line prettier/prettier
       alert("Your party code was not found. Please make sure it is entered correctly.");
     } else {
       organizer = {
@@ -25,9 +23,10 @@ $("#rsvpBtn").on("click", function(event) {
         time: data.time,
         user: localStorage.getItem("userId")
       };
-      console.log(organizer);
+
       $("#rsvpForm").hide();
       $("#rsvpInfo").show();
+      $(".rsvpMessage").hide()      
 
       let photo;
 
@@ -70,7 +69,6 @@ $("#rsvpBtn").on("click", function(event) {
       Location: ${organizer.location} <br>
       Date: ${formatDate} <br>
       Time: ${formatTime}`)
-
     }
   });
 });
@@ -79,6 +77,6 @@ $("#rsvpConfirm").on("click", function(event) {
   event.preventDefault();
     console.log("works!")
   $.post("/api/rsvp", organizer).then(function(data) {
-    console.log("success!")
+    $("#rsvpMessage").text("You've RSVP'd!")
   });
 });

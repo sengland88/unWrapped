@@ -104,7 +104,12 @@ module.exports = function(app) {
       },
       include: [db.User]
     }).then(function(dbParty){
+      console.log(dbParty)
+      if (dbParty) {
         res.json({dbParty})
+      } else {
+        res.json({message: "No RSVP Yet"})
+      }
     });
   });
 };

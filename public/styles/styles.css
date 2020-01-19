@@ -1,4 +1,38 @@
-#coverPic {
-  max-width: 99%;
-  max-height: ;
+body {
+  padding: 0;
+  font-family: 'Varela Round', sans-serif;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 42px;
+  text-align: center;
+}
+
+#navText {
+  background-color: cornsilk;
+  color: grey;
+  font-size: 32px;
+  
+}
+
+.navLinks {
+  margin-left: 25px;
+}
+
+.navImages {
+  margin-bottom: 50px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.rowSpacing {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+.theRow {
+  background-color: white;  
 }
