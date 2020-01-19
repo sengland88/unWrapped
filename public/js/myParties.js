@@ -13,28 +13,27 @@ $(document).ready(function() {
   $.get("/api/parties/" + user).then(function(data) {
     let db = data.dbParties;
 
-    console.log(data);
     let photo;
 
     for (let i = 0; i < db.length; i++) {
       switch (db[i].occasion) {
         case "Wedding":
-          photo = "imgs/wedding.jpg";
+          photo = "imgs/myWedding.jpg";
           break;
         case "Bridal":
-          photo = "imgs/bridal.jpg";
+          photo = "imgs/myBridal.jpg";
           break;
         case "Baby":
-          photo = "imgs/baby.jpg";
+          photo = "imgs/myBaby.jpg";
           break;
         case "Birthday":
-          photo = "imgs/ballons.jpg";
+          photo = "imgs/myBirthday.jpg";
+          break;
+        case "Graduation":
+          photo = "imgs/myGraduation.jpg";
           break;
         case "Retirement":
-          photo = "imgs/ballons.jpg";
-          break;
-        case "Retirement":
-          photo = "imgs/ballons.jpg";
+          photo = "imgs/myRetirement.jpg";
           break;
         default:
           break;
@@ -44,7 +43,7 @@ $(document).ready(function() {
       let formatTime = moment(db[i].time, "HH:MM").format("LT");
 
       let thediv = $("<div>")
-        .addClass("card m-1")
+        .addClass("card m-4")
         .addClass("theCard")
         .attr("style", "width: 18rem;")
         .attr("id", "cardBody");
@@ -144,7 +143,6 @@ $(document).ready(function() {
   // guest info (gift and thank you card) update
   $("#guestUpdate").on("click", function(event) {
     event.preventDefault();
-    console.log("buttons works");
 
     let updatedInfo = {
       UserId: localStorage.getItem("guestUpdate"),
@@ -176,7 +174,6 @@ $(document).ready(function() {
     $("#myParties").hide();
     let id = $(this).attr("id");
     localStorage.setItem("partyId", id);
-    console.log(id)
     getRsvpList(id)
   });
 
@@ -185,9 +182,8 @@ $(document).ready(function() {
     $("#myParties").hide();
     $("#rsvpList").hide();
     $("#guestUpdateList").show();
-    console.log("this button works");
+
     let id = $(this).attr("id");
-    console.log(id);
 
     $.get("/api/users/update/" + id).then(function(data) {
       let db = data.data;
@@ -280,4 +276,11 @@ function getRsvpList(id) {
       
     }
   });
+}
+
+function createPDF(data) {
+
+  const doc = new PDFDocument();
+
+  doc.pipe(fs.createWriteStream('output.pdf'));
 }
