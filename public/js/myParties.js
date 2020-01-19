@@ -189,6 +189,7 @@ $(document).ready(function() {
       let db = data.data;
       localStorage.setItem("guestUpdate", db.UserId);
       $("#guestName").text(`Guest: ${db.User.firstName} ${db.User.lastName}`);
+      $("#giftInput").attr("placeholder", db.gift)
     });
   });
 
