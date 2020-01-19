@@ -12,7 +12,6 @@ module.exports = function(app) {
       if (data) {
         res.json({message: "Error - email already exists"})
       } else {db.User.create(req.body).then(function(data) {
-        console.log("Successful");
         res.json(data);
       })};
     });
@@ -32,12 +31,7 @@ module.exports = function(app) {
       UserId: req.body.UserId
     }
 
-    console.log(newParty)
-
-    db.Party.create(newParty).then(function(data) {      
-      console.log(party)
-      console.log("Successful");
-      console.log(data)
+    db.Party.create(newParty).then(function(data) {
       res.json(data);
     });
   });
@@ -50,9 +44,7 @@ module.exports = function(app) {
 
     }
 
-    db.Rsvp.create(rsvp).then(function(data) {      
-      console.log("Successful");
-      console.log(data)
+    db.Rsvp.create(rsvp).then(function(data) {
       res.json(data);
     });
   });

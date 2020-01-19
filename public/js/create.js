@@ -2,7 +2,6 @@ $("#createConfirm").hide();
 
 $("#createSubmit").on("click", function(event) {
   event.preventDefault();
-  console.log("this works"); 
 
   let name = $("#partyName").val().trim();
   let location = $("#partyLocation").val();
@@ -35,7 +34,6 @@ $("#createSubmit").on("click", function(event) {
   $.post("api/parties", newParty).then(function(data) {
     $("#createForm").hide();
     $("#createConfirm").show();
-    console.log(data)
 
     let formatDate = moment(newParty.date).format('MMMM Do YYYY');
     let formatTime = moment(newParty.time, "HH:MM").format("LT");
@@ -43,22 +41,22 @@ $("#createSubmit").on("click", function(event) {
 
     switch (newParty.occasion) {
       case "Wedding":
-        photo = "imgs/wedding.jpg"
+        photo = "imgs/createWedding.jpg"
         break;
         case "Bridal":
-          photo = "imgs/bridal.jpg"
+          photo = "imgs/createBridal.jpg"
         break;
         case "Baby":
-          photo = "imgs/baby.jpg"
+          photo = "imgs/createBaby.jpg"
         break;
         case "Birthday":
-          photo = "imgs/ballons.jpg"
+          photo = "imgs/createBirthday.jpg"
+        break;
+        case "Graduation":
+          photo = "imgs/createGraduation.jpg"
         break;
         case "Retirement":
-          photo = "imgs/ballons.jpg"
-        break;
-        case "Retirement":
-          photo = "imgs/ballons.jpg"
+          photo = "imgs/createRetirement.jpg"
         break;
       default:
         break;

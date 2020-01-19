@@ -1,22 +1,21 @@
 $("#userSubmit").on("click", function(event) {
   event.preventDefault();
-  console.log("this works");
 
   let userInfo = {
     email: $("#userEmail").val().trim(),
     password: $("#userPassword").val().trim() 
   }
-  console.log(userInfo);
+
   let isEmailValid = emailFormat(userInfo.email)
 
   if (!isEmailValid || !userInfo.password) {
-    alert("Please complete all fields.")
+    $("#errorMessage").text("Please complete all fields.")
     return
   }
 
   $.get("api/users", userInfo).then(function(data){
     if(data.message) {
-      alert("Password or email incorrect. Please try again or register to the site.")
+      $("#errorMessage").text("Email address or password is incorrect.")
     } else {
       loggedIn = localStorage.setItem("loggedIn", true);
       $("#sideBar").show()
@@ -43,15 +42,14 @@ $("#userCreate").on("click", function(event) {
   let isEmailValid = emailFormat(newUserInfo.email)
   let isEmptyString = checkForEmptyEntries(newUserInfo)
 
-  if (!isEmailValid) {
-    alert("Please complete all fields.")
+  if (!isEmailValid || !isEmptyString) {
+    $("#errorMessage").text("Please complete all fields.")
     return
   }
 
   $.post("api/users", newUserInfo).then(function(data) {
-    console.log(data)
     if (data.message) {
-      alert("email exists!")
+      $("#errorMessage").text("Email address already exists")
       return
     }
     localStorage.setItem("name", data.firstName);

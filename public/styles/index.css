@@ -13,29 +13,26 @@ h2 {
   margin-bottom: 30px;
 }
 
-.sideBar {
-  text-align: center;
-  background-color:	#696969;
-  height: 100%;
-  width: 300px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 1%;
+#navText {
+  background-color: #696969;
+  color: wheat;
+  font-size: 32px;
 }
 
-.sideBar a {
-  padding: 30px 5px 30px 5px;
+.navLinks {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.navLinks a {
+  float: left;
   text-decoration: none;
   font-size: 18px;
   color: white ;
-  display: block;
-  border-bottom: #818181 solid 1px;
 }
 
-.sideBar a:hover {
-  color: greenyellow;
+#navText a:hover {
+  color:white;
 }
 
 .theCard {

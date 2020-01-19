@@ -1,37 +1,28 @@
 var db = require("../models");
 
 module.exports = function(app) {
-
   app.get("/api/users", function(req, res) {
-    let email = req.query.email;
-    let password = req.query.password;
-    console.log(email);
-    console.log(password);
-    console.log("connected");
     db.User.findOne({
       where: {
         email: req.query.email,
         password: req.query.password
       }
     }).then(function(dbUsers) {
-      if(dbUsers) {
-        res.json({name: dbUsers.firstName, userId: dbUsers.id})
+      if (dbUsers) {
+        res.json({ name: dbUsers.firstName, userId: dbUsers.id });
       } else {
-        res.json({message: "failed"})
+        res.json({ message: "failed" });
       }
-
     });
   });
 
   app.get("/api/rsvp/:partycode", function(req, res) {
-    let partyCode = req.params.partycode;
-    console.log(partyCode);
     db.Party.findOne({
       where: {
         partyCode: req.params.partycode
       }
     }).then(function(dbParties) {
-      if(dbParties){
+      if (dbParties) {
         res.json({
           partyId: dbParties.id,
           name: dbParties.name,
@@ -40,75 +31,69 @@ module.exports = function(app) {
           date: dbParties.date,
           time: dbParties.time,
           organizer: dbParties.userId
-        })
+        });
       } else {
-        res.json({message: "failed"})
+        res.json({ message: "failed" });
       }
     });
   });
 
   app.get("/api/parties/:user", function(req, res) {
     let user = req.params.user;
-    console.log(user);
+
     db.Party.findAll({
       where: {
         UserId: user
       }
     }).then(function(dbParties) {
-      console.log(dbParties)
-      if(dbParties){
-        res.json({dbParties})
+      if (dbParties) {
+        res.json({ dbParties });
       } else {
-        res.json({message: "You have no parties"})
+        res.json({ message: "You have no parties" });
       }
     });
   });
 
   app.get("/api/parties/update/:id", function(req, res) {
-    console.log("connected")
     let id = req.params.id;
-    console.log(id);
+
     db.Party.findOne({
       where: {
         id: id
       }
-    }).then(function(dbParty){
-      if(dbParty){
-        res.json({dbParty})
+    }).then(function(dbParty) {
+      if (dbParty) {
+        res.json({ dbParty });
       } else {
-        res.json({message: "Party not found"})
+        res.json({ message: "Party not found" });
       }
     });
   });
 
   app.get("/api/users/update/:id", function(req, res) {
-    
-    let id = req.params.id
+    let id = req.params.id;
     db.Rsvp.findOne({
       where: {
         UserId: id
       },
       include: [db.User]
-    }).then(function(data){
-      console.log("success!")
-        res.json({data})
+    }).then(function(data) {
+      res.json({ data });
     });
   });
 
   app.get("/api/rsvp/guests/:id", function(req, res) {
-    console.log("connected")
     let id = req.params.id;
     db.Rsvp.findAll({
       where: {
         PartyId: id
       },
       include: [db.User]
-    }).then(function(dbParty){
-      console.log(dbParty)
+    }).then(function(dbParty) {
       if (dbParty) {
-        res.json({dbParty})
+        res.json({ dbParty });
       } else {
-        res.json({message: "No RSVP Yet"})
+        res.json({ message: "No RSVP Yet" });
       }
     });
   });

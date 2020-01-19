@@ -6,7 +6,6 @@ $("#rsvpInfo").hide();
 $("#rsvpBtn").on("click", function(event) {
   event.preventDefault();
   partyCode = $("#partyCode").val().trim();
-  console.log(partyCode);
   if (partyCode === "") {
     return;
   }
@@ -32,22 +31,22 @@ $("#rsvpBtn").on("click", function(event) {
 
       switch (organizer.occasion) {
         case "Wedding":
-          photo = "imgs/wedding.jpg"
+          photo = "imgs/createWedding.jpg"
           break;
           case "Bridal":
-            photo = "imgs/bridal.jpg"
+            photo = "imgs/createBridal.jpg"
           break;
           case "Baby":
-            photo = "imgs/baby.jpg"
+            photo = "imgs/createBaby.jpg"
           break;
           case "Birthday":
-            photo = "imgs/ballons.jpg"
+            photo = "imgs/createBirthday.jpg"
+          break;
+          case "Graduation":
+            photo = "imgs/createGraduation.jpg"
           break;
           case "Retirement":
-            photo = "imgs/ballons.jpg"
-          break;
-          case "Retirement":
-            photo = "imgs/ballons.jpg"
+            photo = "imgs/createRetirement.jpg"
           break;
         default:
           break;
@@ -75,7 +74,6 @@ $("#rsvpBtn").on("click", function(event) {
 
 $("#rsvpConfirm").on("click", function(event) {
   event.preventDefault();
-    console.log("works!")
   $.post("/api/rsvp", organizer).then(function(data) {
     $("#rsvpMessage").text("You've RSVP'd!")
   });

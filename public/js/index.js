@@ -1,3 +1,3 @@
-$("#signOut").on("click", function() {
+$(".signOut").on("click", function() {
   localStorage.clear();
 });
