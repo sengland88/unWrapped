@@ -189,6 +189,7 @@ $(document).ready(function() {
       let db = data.data;
       localStorage.setItem("guestUpdate", db.UserId);
       $("#guestName").text(`Guest: ${db.User.firstName} ${db.User.lastName}`);
+      $("#giftInput").attr("placeholder", db.gift)
     });
   });
 
@@ -238,12 +239,12 @@ function getRsvpList(id) {
 
       let tRow = $("<tr>");
 
-      let name = db[0].User.firstName + " " + db[0].User.lastName;
-      let email = db[0].User.email;
-      let address = db[0].User.address;
+      let name = db[i].User.firstName + " " + db[i].User.lastName;
+      let email = db[i].User.email;
+      let address = db[i].User.address;
       let thankYou = "Not Sent";
 
-      if (db[0].thankYou) {
+      if (db[i].thankYou) {
         thankYou = "Sent";
       }
 

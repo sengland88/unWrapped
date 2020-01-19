@@ -1,3 +1,7 @@
+const fs = require('fs')
+const PDFDocument = require('pdfkit');
+const doc = new PDFDocument;
+
 var db = require("../models");
 
 module.exports = function(app) {
@@ -92,6 +96,17 @@ module.exports = function(app) {
     }).then(function(dbParty) {
       if (dbParty) {
         res.json({ dbParty });
+
+        //Export to PDF
+        doc.pipe(fs.createWriteStream('output.pdf'));
+        for (let i = 0; i < dbParty.length; i++) {
+          console.log(dbParty[i].dataValues.User.dataValues.firstName)
+          console.log(dbParty[i].dataValues.gift)
+        }
+        doc.text(`Guest Name      Email      Address      Gift      Thank You Note`)
+        doc.text(`${dbParty[0].dataValues.User.dataValues.firstName}`)
+        doc.end();
+        
       } else {
         res.json({ message: "No RSVP Yet" });
       }
