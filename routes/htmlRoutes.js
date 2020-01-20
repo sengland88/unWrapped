@@ -43,6 +43,10 @@ module.exports = function(app) {
     res.render("updateParty");
   });
 
+  app.get("/myRsvps", function(req, res) {
+    res.render("myRsvps");
+  });
+
   app.get("/output.pdf", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/output.pdf"));
   });
