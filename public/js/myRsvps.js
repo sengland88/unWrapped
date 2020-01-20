@@ -11,16 +11,9 @@ $(document).ready(function() {
   $.get("/api/myRsvps/" + user).then(function(data) {
 
     $("tbody").empty(); 
-
-    
     
     for (let i = 0; i < data.dbRsvps.length; i++) {
       let party = data.dbRsvps[i].Party
-      console.log(`${party.name}
-                      ${party.occasion}
-                      ${party.location}
-                      ${party.date}
-                      ${party.time}`)
 
       let partyName = $("<td class='align-middle'>").html(`${party.name}`);
       let occasion = $("<td class='align-middle'>").html(`${party.occasion}`);
