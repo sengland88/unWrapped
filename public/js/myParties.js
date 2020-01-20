@@ -46,7 +46,9 @@ $(document).ready(function() {
         .addClass("card m-4")
         .addClass("theCard")
         .attr("style", "width: 18rem;")
-        .attr("id", "cardBody");
+        .attr("id", "cardBody")
+        .attr("data-aos", "flip-left")
+        .attr("data-aos-duration", "1500");
 
       let theImg = $("<img>")
         .attr("src", photo)
