@@ -6,8 +6,6 @@ if (!localStorage.getItem("userId")) {
 $(document).ready(function() {
   let user = localStorage.getItem("userId");
 
-  console.log(user)
-
   $.get("/api/myRsvps/" + user).then(function(data) {
 
     $("tbody").empty(); 
@@ -20,6 +18,16 @@ $(document).ready(function() {
       let location = $("<td class='align-middle'>").html(`${party.location}`);
       let date = $("<td class='align-middle'>").html(party.date);
       let time = $("<td class='align-middle'>").html(party.time);
+
+      let deleteBtn = $("<button>");
+
+      deleteBtn.attr("id", data.dbRsvps[i].id);
+      deleteBtn.addClass("delete");
+      deleteBtn.addClass("btn btn-danger");
+      deleteBtn.addClass("btn-sm");
+      deleteBtn.text(" Delete ");
+
+      let applyDelete = $("<td class='align-middle'>").html(deleteBtn);
       
       let tRow = $("<tr>");
 
@@ -28,7 +36,8 @@ $(document).ready(function() {
         occasion,
         location,
         date,
-        time
+        time,
+        applyDelete
       );
 
       $("#myRsvpsList").append(tRow);
@@ -36,14 +45,14 @@ $(document).ready(function() {
   });
 
   //delete method
-  // $(document).on("click", ".delete", function() {
-  //   let id = $(this).attr("id");
+  $(document).on("click", ".delete", function() {
+    let id = $(this).attr("id");
 
-  //   $.ajax({
-  //     method: "DELETE",
-  //     url: "/api/parties/" + id
-  //   }).then(function(data) {
-  //     location.reload();
-  //   });
-  // });
+    $.ajax({
+      method: "DELETE",
+      url: "/api/myRsvps/" + id
+    }).then(function(data) {
+      location.reload();
+    });
+  });
 }); // document ready end bracket
