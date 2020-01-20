@@ -122,4 +122,21 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.get("/api/myRsvps/:id", function(req, res) {
+    let user = req.params.id;
+
+    db.Rsvp.findAll({
+      where: {
+        UserId: user
+      },
+      include: [db.Party]
+    }).then(function(dbRsvps) {
+      if (dbRsvps) {
+        res.json({ dbRsvps });
+      } else {
+        res.json({ message: "You have no RSVPs" });
+      }
+    });
+  });
 };
