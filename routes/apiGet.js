@@ -99,12 +99,22 @@ module.exports = function(app) {
 
         //Export to PDF
         doc.pipe(fs.createWriteStream('output.pdf'));
+        doc.image('public/imgs/unwrapped_pdf.jpg', {fit: [200, 200], align: 'center'})
+            .moveDown(0.7);
         for (let i = 0; i < dbParty.length; i++) {
-          console.log(dbParty[i].dataValues.User.dataValues.firstName)
-          console.log(dbParty[i].dataValues.gift)
+          let guest = dbParty[i].dataValues.User.dataValues
+          let guestInfo = dbParty[i].dataValues
+          let thankYou;
+          if (guestInfo.thankYou) {
+            thankYou = "Yes";
+          } else thankYou = "No";
+          doc.font('Times-Roman')
+              .fontSize(16)
+              .text(`Guest: ${guest.firstName}`);
+          doc.fontSize(12)
+              .list([`Email: ${guest.email}`, `Address: ${guest.address}`, `Gift: ${guestInfo.gift}`, `Thank you? ${thankYou}`])
+              .moveDown(0.5);
         }
-        doc.text(`Guest Name      Email      Address      Gift      Thank You Note`)
-        doc.text(`${dbParty[0].dataValues.User.dataValues.firstName}`)
         doc.end();
         
       } else {
