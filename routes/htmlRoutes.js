@@ -44,7 +44,7 @@ module.exports = function(app) {
   });
 
   app.get("/output.pdf", function(req, res) {
-    res.sendFile(path.join(__dirname, "../output.pdf"));
+    res.sendFile(path.join(__dirname, "../public/output.pdf"));
   });
 
   app.get("/*", function(req, res) {
