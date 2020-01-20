@@ -98,7 +98,7 @@ module.exports = function(app) {
         res.json({ dbParty });
 
         //Export to PDF
-        doc.pipe(fs.createWriteStream('output.pdf'));
+        doc.pipe(fs.createWriteStream('public/output.pdf'));
         doc.image('public/imgs/unwrapped_pdf.jpg', {fit: [200, 200], align: 'center'})
             .moveDown(0.7);
         for (let i = 0; i < dbParty.length; i++) {
