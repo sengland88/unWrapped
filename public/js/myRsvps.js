@@ -13,11 +13,14 @@ $(document).ready(function() {
     for (let i = 0; i < data.dbRsvps.length; i++) {
       let party = data.dbRsvps[i].Party
 
+      let formatDate = moment(party.date).format("MMMM Do YYYY");
+      let formatTime = moment(party.time, "HH:MM").format("LT");
+
       let partyName = $("<td class='align-middle'>").html(`${party.name}`);
       let occasion = $("<td class='align-middle'>").html(`${party.occasion}`);
       let location = $("<td class='align-middle'>").html(`${party.location}`);
-      let date = $("<td class='align-middle'>").html(party.date);
-      let time = $("<td class='align-middle'>").html(party.time);
+      let date = $("<td class='align-middle'>").html(formatDate);
+      let time = $("<td class='align-middle'>").html(formatTime);
 
       let deleteBtn = $("<button>");
 
