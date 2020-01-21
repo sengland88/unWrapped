@@ -21,18 +21,20 @@ The party planning application, unWrapped, utilizes an express server and a MySQ
 -	PDFkit (export to pdf)
 
 # Developers
--	Nadia Kadri 
-o	GitHub: http://bit.ly/3avQxdq 
-o	LinkedIn: http://bit.ly/38tzuXA 
-o	Portfolio: http://bit.ly/2G98osn 
+-	Nadia Kadri
+GitHub: http://bit.ly/3avQxdq 
+LinkedIn: http://bit.ly/38tzuXA 
+Portfolio: http://bit.ly/2G98osn
+
 -	Roy Davis
-o	GitHub: http://bit.ly/36dwYmD 
-o	LinkedIn: http://bit.ly/30Iiwlx 
-o	Portfolio: http://bit.ly/2RfydNP 
+GitHub: http://bit.ly/36dwYmD 
+LinkedIn: http://bit.ly/30Iiwlx 
+Portfolio: http://bit.ly/2RfydNP 
+
 -	Shelby England
-o	GitHub: http://bit.ly/2TJUyF6 
-o	LinkedIn: http://bit.ly/2SVq3LX 
-o	Portfolio: http://bit.ly/2Fwp24X 
+GitHub: http://bit.ly/2TJUyF6 
+LinkedIn: http://bit.ly/2SVq3LX 
+Portfolio: http://bit.ly/2Fwp24X 
 
 # Future Development Considerations
 -	Give the user the ability to update their personal data they provided upon registering
