@@ -78,7 +78,7 @@ module.exports = function(app) {
     let id = req.params.id;
     db.Rsvp.findOne({
       where: {
-        UserId: id
+        id: id
       },
       include: [db.User]
     }).then(function(data) {
