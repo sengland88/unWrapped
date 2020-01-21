@@ -115,7 +115,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     var updatedInfo = {
-      id: localStorage.getItem("partyId"),
+      id: $(this).attr("party-id"),
       name: $("#updatedName")
         .val()
         .trim(),
@@ -147,7 +147,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     let updatedInfo = {
-      UserId: localStorage.getItem("guestUpdate"),
+      id: $(this).attr("rsvp-id"),
       gift: $("#giftInput")
         .val()
         .trim(),
@@ -189,9 +189,9 @@ $(document).ready(function() {
 
     $.get("/api/users/update/" + id).then(function(data) {
       let db = data.data;
-      localStorage.setItem("guestUpdate", db.UserId);
+      $("#guestUpdate").attr("rsvp-id", id)
       $("#guestName").text(`Guest: ${db.User.firstName} ${db.User.lastName}`);
-      $("#giftInput").attr("placeholder", db.gift)
+      $("#giftInput").val(db.gift)
     });
   });
 
@@ -200,6 +200,7 @@ $(document).ready(function() {
     $("#myParties").hide();
     $("#updateForm").show();
     let id = $(this).attr("id");
+    $("#updateSubmit").attr("party-id", id);
 
     localStorage.setItem("partyId", id);
 
@@ -237,6 +238,8 @@ function getRsvpList(id) {
 
     for (let i = 0; i < db.length; i++) {
 
+      console.log(db[i])
+
       $("#norsvp").hide();
 
       let tRow = $("<tr>");
@@ -253,12 +256,12 @@ function getRsvpList(id) {
       let guestName = $("<td class='align-middle'>").html(`${name}`);
       let guestEmail = $("<td class='align-middle'>").html(`${email}`);
       let guestAddress = $("<td class='align-middle'>").html(`${address}`);
-      let guestGift = $("<td class='align-middle'>").html(db[0].gift);
+      let guestGift = $("<td class='align-middle'>").html(db[i].gift);
       let thankYouNote = $("<td class='align-middle'>").html(thankYou);
 
       var updateBtn = $("<button>");
 
-      updateBtn.attr("id", db[i].UserId);
+      updateBtn.attr("id", db[i].id);
       updateBtn.addClass("updateGuest");
       updateBtn.addClass("btn btn-danger");
       updateBtn.addClass("btn-sm");

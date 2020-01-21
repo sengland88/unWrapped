@@ -14,7 +14,7 @@ module.exports = function(app) {
   app.put("/api/rsvp/updateinfo", function(req, res) {
     db.Rsvp.update(req.body, {
       where: {
-        UserId: req.body.UserId
+        id: req.body.id
       }
     }).then(function(updateParty) {
       res.json(updateParty);
